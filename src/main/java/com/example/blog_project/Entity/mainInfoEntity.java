@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "main_info")
-public class mainInfo extends BaseTimeEntity {
+public class mainInfoEntity extends BaseTimeEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id")

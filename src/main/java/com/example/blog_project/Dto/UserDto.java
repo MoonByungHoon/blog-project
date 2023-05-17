@@ -1,6 +1,6 @@
 package com.example.blog_project.Dto;
 
-import com.example.blog_project.Entity.UserInfo;
+import com.example.blog_project.Entity.UserInfoEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +18,7 @@ public class UserDto {
   private String username;
   private String password;
   private String nickname;
-  private UserInfo userInfo;
+  private UserInfoEntity userInfo;
   private LocalDateTime createdDate;
   private LocalDateTime modifiedDate;
 }
