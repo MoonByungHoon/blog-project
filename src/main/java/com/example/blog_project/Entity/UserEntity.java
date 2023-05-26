@@ -14,10 +14,10 @@ public class UserEntity extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column (name = "id")
+  @Column(name = "id")
   private Long id;
 
-  @Column(name = "username", nullable = false, unique = true)
+  @Column(name = "username", nullable = false, length = 20, unique = true)
   private String username;
 
   @Column(name = "password", nullable = false, length = 256)
@@ -27,7 +27,8 @@ public class UserEntity extends BaseTimeEntity {
   private String nickname;
 
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(name = "user_info")
+  @JoinColumn(name = "user_info_Id")
+//  @MapsId
   private UserInfoEntity userInfo;
   //user와 userInfo의 1:1 단방향 관계를 형성.
   //양방향이 아닌 이유는 만들고 잇는 프로젝트에서는

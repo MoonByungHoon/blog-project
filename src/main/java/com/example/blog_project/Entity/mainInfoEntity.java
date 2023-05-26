@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "main_info")
 public class mainInfoEntity extends BaseTimeEntity {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private Long id;
 

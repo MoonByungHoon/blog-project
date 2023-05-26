@@ -30,6 +30,9 @@ dependencies {
   annotationProcessor 'org.projectlombok:lombok'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'org.springframework.security:spring-security-test'
+  implementation 'org.hibernate:hibernate-validator:8.0.0.Final'
+  // @NotNull, @NotEmpty, @NotBlank, @Valid 등의 어노테이션을 사용하기 위해서는
+  // 꼭 gradle에 위의 내용을 추가하여 의존성 추가를 해야한다.
 }
 
 tasks.named('test') {

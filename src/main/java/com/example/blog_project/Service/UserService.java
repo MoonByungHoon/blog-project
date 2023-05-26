@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class UserService {
@@ -13,7 +15,13 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public UserEntity read(Long id) {
-    UserEntity user = userRepository.findById(Long id);
+  public Optional<UserEntity> findUser(final Long id) {
+
+    return userRepository.findById(id);
+  }
+
+  public UserEntity create(final UserEntity userEntity) {
+
+    return userRepository.save(userEntity);
   }
 }
