@@ -16,6 +16,9 @@ public class UserInfoEntity extends BaseTimeEntity {
   @Column(name = "id")
   private Long id;
 
+  @Column(name = "nickname", nullable = false, length = 30, unique = true)
+  private String nickname;
+
   @Column(name = "age", length = 3)
   private String age;
 

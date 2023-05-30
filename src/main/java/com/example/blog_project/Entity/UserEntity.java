@@ -2,6 +2,7 @@ package com.example.blog_project.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 @Builder
 @Setter
@@ -22,12 +23,10 @@ public class UserEntity extends BaseTimeEntity {
 
   @Column(name = "password", nullable = false, length = 256)
   private String password;
-//
-//  @Column(name = "nickname", nullable = false, length = 30, unique = true)
-//  private String nickname;
 
-  @Column(name = "rank", nullable = false, length = 10)
-  private String rank;
+  @Column(name = "rating", nullable = false, length = 10)
+  @ColumnDefault("1")
+  private String rating;
 
   @OneToOne(mappedBy = "userEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @PrimaryKeyJoinColumn
