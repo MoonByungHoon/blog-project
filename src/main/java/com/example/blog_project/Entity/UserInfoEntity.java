@@ -10,10 +10,9 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "user_info")
-public class UserInfoEntity {
+public class UserInfoEntity extends BaseTimeEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private Long id;
 
@@ -25,4 +24,9 @@ public class UserInfoEntity {
 
   @Column(name = "greetings", length = 300)
   private String greetings;
+
+  @OneToOne
+  @MapsId
+  @JoinColumn(name = "id", referencedColumnName = "id")
+  private UserEntity userEntity;
 }

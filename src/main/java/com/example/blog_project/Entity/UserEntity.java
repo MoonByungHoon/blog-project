@@ -22,13 +22,15 @@ public class UserEntity extends BaseTimeEntity {
 
   @Column(name = "password", nullable = false, length = 256)
   private String password;
+//
+//  @Column(name = "nickname", nullable = false, length = 30, unique = true)
+//  private String nickname;
 
-  @Column(name = "nickname", nullable = false, length = 30, unique = true)
-  private String nickname;
+  @Column(name = "rank", nullable = false, length = 10)
+  private String rank;
 
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(name = "user_info_Id")
-//  @MapsId
+  @OneToOne(mappedBy = "userEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @PrimaryKeyJoinColumn
   private UserInfoEntity userInfo;
   //user와 userInfo의 1:1 단방향 관계를 형성.
   //양방향이 아닌 이유는 만들고 잇는 프로젝트에서는
