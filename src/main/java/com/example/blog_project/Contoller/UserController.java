@@ -24,25 +24,31 @@ public class UserController {
   private UserInfoService userInfoService;
 
 
-//  회원가입
+  //  회원가입
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@RequestBody @Valid UserTotalDto userTotalDto) {
-//    try {
-//      UserInfoEntity userInfo = UserInfoEntity.builder()
-//              .age(userTotalDto.getAge())
-//              .email(userTotalDto.getEmail())
-//              .greetings(userTotalDto.getGreetings())
-//              .build();
-//
-////      UserInfoDto userInfoService.create(userInfo);
-//
-//              UserEntity userEntity = UserEntity.builder()
-//              .password(userTotalDto.getPassword())
-//              .nickname(userTotalDto.getNickname())
-//              .build();
-//
-//
-//    }
+    try {
+      UserEntity userEntity = userService.create(
+              UserEntity.builder()
+                      .username(userTotalDto.getUsername())
+                      .password(userTotalDto.getPassword())
+                      .build()
+      );
+
+      if (userEntity != null) {
+        UserInfoEntity userInfo = userInfoService.create(
+                UserInfoEntity.builder()
+                        .userEntity(userEntity)
+                        .nickname(userTotalDto.getNickname())
+                        .age(userTotalDto.getAge())
+                        .email(userTotalDto.getEmail())
+                        .greetings(userTotalDto.getGreetings())
+                        .build()
+        );
+      }
+    } catch () {
+
+    }
 
     return null;
   }

@@ -17,8 +17,7 @@ public class UserDto {
   private Long id;
   private String username;
   private String password;
-  private String nickname;
-  private UserInfoEntity userInfo;
+  private String rating;
   private LocalDateTime createdDate;
   private LocalDateTime modifiedDate;
 }
