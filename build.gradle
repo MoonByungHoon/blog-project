@@ -21,7 +21,7 @@ repositories {
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-  implementation 'org.springframework.boot:spring-boot-starter-security'
+//  implementation 'org.springframework.boot:spring-boot-starter-security'
   implementation 'org.springframework.boot:spring-boot-starter-web'
   compileOnly 'org.projectlombok:lombok'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -29,10 +29,10 @@ dependencies {
   runtimeOnly 'com.mysql:mysql-connector-j'
   annotationProcessor 'org.projectlombok:lombok'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  testImplementation 'org.springframework.security:spring-security-test'
-  implementation 'org.hibernate:hibernate-validator:8.0.0.Final'
+//  testImplementation 'org.springframework.security:spring-security-test'
   // @NotNull, @NotEmpty, @NotBlank, @Valid 등의 어노테이션을 사용하기 위해서는
-  // 꼭 gradle에 위의 내용을 추가하여 의존성 추가를 해야한다.
+  // 꼭 gradle에 아래의 내용을 추가하여 의존성 추가를 해야한다.
+  implementation 'org.hibernate:hibernate-validator:8.0.0.Final'
 }
 
 tasks.named('test') {

@@ -15,13 +15,13 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public Optional<UserEntity> findUser(final Long id) {
-
-    return userRepository.findById(id);
-  }
-
   public UserEntity create(final UserEntity userEntity) {
 
     return userRepository.save(userEntity);
+  }
+
+  public Optional<UserEntity> findUser(final Long id) {
+
+    return userRepository.findById(id);
   }
 }

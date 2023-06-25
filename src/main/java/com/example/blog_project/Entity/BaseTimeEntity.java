@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 //엔티티의 CRU 작업에 대해서 이를 감지하고 이벤트 처리를 하기 위한 어노테이션.
 @EntityListeners(AuditingEntityListener.class)
-public class BaseTimeEntity {
+public abstract class BaseTimeEntity {
 
   @CreatedDate
   @Column(name = "created_date", nullable = false)

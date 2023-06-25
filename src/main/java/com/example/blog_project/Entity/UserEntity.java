@@ -2,10 +2,8 @@ package com.example.blog_project.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 @Builder
-@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,14 +22,11 @@ public class UserEntity extends BaseTimeEntity {
   @Column(name = "password", nullable = false, length = 256)
   private String password;
 
-  @Column(name = "rating", nullable = false, length = 10)
-  @ColumnDefault("1")
-  private String rating;
-
-  @OneToOne(mappedBy = "userEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @PrimaryKeyJoinColumn
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", referencedColumnName = "id")
   private UserInfoEntity userInfo;
-  //user와 userInfo의 1:1 단방향 관계를 형성.
-  //양방향이 아닌 이유는 만들고 잇는 프로젝트에서는
-  //userInfo의 필요는 유저의 개인정보 수정 외에는 따로 쓰일 일이 없다.
+
+  public void convertUserInfo(final UserInfoEntity userInfo){
+    this.userInfo = userInfo;
+  }
 }
