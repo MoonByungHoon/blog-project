@@ -1,7 +1,7 @@
 package com.example.blog_project.Dto;
 
 import com.example.blog_project.Entity.UserEntity;
-import com.example.blog_project.Entity.UserInfoEntity;
+import com.example.blog_project.Entity.UserProfileEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -23,32 +23,48 @@ public class UserTotalDto {
   private String password;
   private UserEntity user;
 
-  //userInfo
+  //userProfile
   @NotBlank
   private String nickname;
   private String age;
   private String greetings;
   private String rating;
-  private UserInfoEntity userInfo;
+  private UserProfileEntity userProfile;
 
   //dateTime
   private LocalDateTime createdDate;
   private LocalDateTime modifiedDate;
 
-  public UserTotalDto(final UserEntity userEntity, final UserInfoEntity userInfo) {
+  public UserTotalDto(final UserEntity userEntity) {
     this.id = userEntity.getId();
     this.username = userEntity.getUsername();
-    this.password = userEntity.getPassword();
-    this.nickname = userInfo.getNickname();
-    this.age = userInfo.getAge();
-    this.greetings = userInfo.getGreetings();
-    this.rating = userInfo.getRating();
+    this.nickname = userEntity.getUserProfile().getNickname();
+    this.age = userEntity.getUserProfile().getAge();
+    this.greetings = userEntity.getUserProfile().getGreetings();
+    this.rating = userEntity.getUserProfile().getRating();
     this.createdDate = userEntity.getCreateDate();
 
-    if (userEntity.getModifiedDate().isAfter(userInfo.getModifiedDate())) {
+    if(userEntity.getModifiedDate().isAfter(userEntity.getUserProfile().getModifiedDate())){
       this.modifiedDate = userEntity.getModifiedDate();
     } else {
-      this.modifiedDate = userInfo.getModifiedDate();
+      this.modifiedDate = userEntity.getUserProfile().getModifiedDate();
     }
   }
+
+//  public UserTotalDto(final UserEntity userEntity, final UserProfileEntity userProfile) {
+//    this.id = userEntity.getId();
+//    this.username = userEntity.getUsername();
+//    this.password = userEntity.getPassword();
+//    this.nickname = userProfile.getNickname();
+//    this.age = userProfile.getAge();
+//    this.greetings = userProfile.getGreetings();
+//    this.rating = userProfile.getRating();
+//    this.createdDate = userEntity.getCreateDate();
+//
+//    if (userEntity.getModifiedDate().isAfter(userProfile.getModifiedDate())) {
+//      this.modifiedDate = userEntity.getModifiedDate();
+//    } else {
+//      this.modifiedDate = userProfile.getModifiedDate();
+//    }
+//  }
 }

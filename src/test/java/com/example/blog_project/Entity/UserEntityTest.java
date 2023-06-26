@@ -31,7 +31,7 @@ class UserEntityTest {
   }
 
   @Test
-  void getUserInfo() {
+  void getUser() {
   }
 
   @Test

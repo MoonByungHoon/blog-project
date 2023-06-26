@@ -1,7 +1,7 @@
 package com.example.blog_project.Dto;
 
 import com.example.blog_project.Entity.UserEntity;
-import com.example.blog_project.Entity.UserInfoEntity;
+import com.example.blog_project.Entity.UserProfileEntity;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Slf4j
-public class UserInfoDto {
+public class UserProfileDto {
 
   @NotBlank
   private Long id;
@@ -27,9 +27,9 @@ public class UserInfoDto {
   private LocalDateTime createdDate;
   private LocalDateTime modifiedDate;
 
-  public static UserInfoEntity toEntity(final UserEntity userEntity, final UserTotalDto userTotalDto) {
+  public static UserProfileEntity toEntity(final UserEntity userEntity, final UserTotalDto userTotalDto) {
 
-    return UserInfoEntity.builder()
+    return UserProfileEntity.builder()
             .user(userEntity)
             .nickname(userTotalDto.getNickname())
             .age(userTotalDto.getAge())

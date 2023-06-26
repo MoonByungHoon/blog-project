@@ -1,10 +1,9 @@
 package com.example.blog_project.Dto;
 
 import com.example.blog_project.Entity.UserEntity;
-import com.example.blog_project.Entity.UserInfoEntity;
+import com.example.blog_project.Entity.UserProfileEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,9 +27,14 @@ public class UserDto {
 
   @NotBlank
   private String password;
-  private UserInfoEntity userInfo;
+  private UserProfileEntity userProfile;
   private LocalDateTime createdDate;
   private LocalDateTime modifiedDate;
+
+  public UserDto(UserEntity user) {
+    this.id = user.getId();
+    this.username = user.getUsername();
+  }
 
   public static UserEntity toEntity(final UserTotalDto userTotalDto) {
 
